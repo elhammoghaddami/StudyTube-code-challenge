@@ -1,0 +1,39 @@
+<div mat-dialog-title>
+  <div class="title">
+    <mat-icon class="addIcon">add</mat-icon>
+    Add User
+  </div>
+  <div class="action">
+    <mat-icon (click)="close()" class="closeIcon">close</mat-icon>
+  </div>
+</div>
+<div mat-dialog-content>
+  <form class="text-left" [formGroup]='addUserForm' id="addUserForm" (ngSubmit)="submit(addUserForm)" novalidate>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input title="name" type="text" name="name" formControlName="name" matInput required>
+      <mat-hint class="errorMsg" data-cy="name-error" [hidden]="f['name'].untouched || f['name'].valid">
+        Name is required
+      </mat-hint>
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input title="email" type="email" name="email" formControlName="email" matInput>
+      <mat-hint class="errorMsg" data-cy="email-error" [hidden]="f['email'].untouched || f['email'].valid">
+        A valid email address is required
+      </mat-hint>
+    </mat-form-field>
+    <input class="hidden" type="file" #UploadFileInput id="fileUpload" (change)="fileChangeEvent($event)"
+      name="fileUpload" multiple="multiple" accept="image/*" />
+    <label for="fileUpload" class="uploadBtn">
+      <mat-icon>upload</mat-icon>
+      {{myfilename}}
+    </label>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button type="submit" (click)="submit(addUserForm)" [disabled]="!addUserForm.valid" class="transparentBtn" mat-button>
+    <mat-icon class="addIcon">add</mat-icon>
+    Create User
+  </button>
+</div>
