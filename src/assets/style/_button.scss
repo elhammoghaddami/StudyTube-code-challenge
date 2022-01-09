@@ -1,0 +1,111 @@
+button {
+  cursor: pointer;
+  outline: 0;
+  &:disabled{
+    color: #bebebe !important;
+  }
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin button-circle($w, $color, $bg, $border) {
+  width: $w;
+  height: $w;
+  font-size: 14px;
+  font-family: var(--fontFamily);
+  font-weight: bold;
+  color: $color;
+  background-color: $bg;
+  border:4px solid $border;
+  border-radius: 100%;
+  i {
+    font-size: 24px;
+    vertical-align: middle;
+  }
+  span {
+    color: var(--primaryColor400);
+  }
+  &:disabled {
+    box-shadow: none;
+    color: #bebebe;
+  }
+}
+@mixin button-lg($color, $border) {
+  height: 48px;
+  font-size: 14px;
+  font-family: var(--fontFamily);
+  font-weight: bold;
+  color: $color;
+  background-color: rgba($color, 0.1);
+  border: $border;
+  border-radius: 28px;
+  i {
+    vertical-align: middle;
+  }
+}
+@mixin button-transparent($color) {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-family: var(--fontFamily);
+  font-weight: bold;
+  color: $color;
+  background: transparent;
+  border: 0;
+  padding: 8px 13px 8px 8px;
+  border-radius: 20px;
+  i {
+    vertical-align: middle;
+    margin-left: 8px;
+  }
+}
+
+.primaryCircleBtn {
+  @include button-circle(56px, #ffffff,  var(--primaryColor400), var(--primaryColor300));
+}
+.primaryBtn {
+  @include button-lg(var(--primaryColor400), var(--primaryColor300));
+}
+.transparentBtn {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  &:focus {
+    outline: none;
+  }
+  @include button-transparent(var(--primaryColor400));
+}
+
+.fabBtn {
+  bottom: 35px;
+  position: absolute;
+  box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 0.24), 0 0 12px 0 rgba(0, 0, 0, 0.12);
+}
+.growBtn {
+  border-radius: 28px;
+  overflow: hidden;
+  direction: ltr;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  transition-property: width;
+  transition-duration: 1s;
+  span {
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-align: center;
+    margin-left: 16px;
+  }
+  &:hover {
+    width: 140px;
+    border-radius: 28px;
+  }
+}

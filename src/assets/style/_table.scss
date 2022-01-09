@@ -1,0 +1,136 @@
+.defaultTable {
+  min-width: 100%;
+  width: max-content;
+  border-collapse: collapse;
+  border-spacing: 0;
+  position: relative;
+  table-layout: auto;
+
+  &:focus {
+    outline: 0;
+  }
+
+  th {
+    height: 56px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #505050;
+    padding: 0 16px;
+    background-color: #e6e6e6;
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 3;
+    top: 0px;
+    border: none;
+    text-align: left;
+    white-space: nowrap;
+
+    .regular {
+      font-weight: normal;
+    }
+
+    &:hover {
+      background: #f5f5f5;
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        height: 80px;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1;
+        letter-spacing: normal;
+        text-align: left;
+        color: #282828;
+        padding: 0 16px;
+        overflow: hidden;
+        position: relative;
+        border-bottom: 1px solid #e6e6e6;
+        &:last-child,
+        &:first-child {
+          width: 24px;
+          border: 0;
+          padding: 0;
+        }
+        span.ellipsis {
+          width: fit-content;
+          max-width: 90%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          position: absolute;
+          top: 32px;
+        }
+
+        .avatar {
+          width: 56px;
+          height: 56px;
+          border-radius: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 29px;
+
+          img {
+            width: 29px;
+            opacity: 0.5;
+          }
+        }
+
+        .actionsBtn {
+          color: #bebebe;
+          font-size: 24px;
+
+          &:active {
+            background-color: rgba(140, 100, 255, 0.1);
+            border-radius: 100%;
+          }
+        }
+
+        .txtWithIcon {
+          display: flex;
+          align-items: center;
+
+          .icon {
+            font-size: 24px;
+            margin-right: 8px;
+          }
+        }
+      }
+      &:hover {
+        td {
+          background-color: #e5f5f9;
+          border-bottom: 1px solid #e5f5f9;
+        }
+        .actionsBtn {
+          color: #282828;
+        }
+        .changeStatusBtn {
+          font-weight: bold;
+        }
+      }
+
+      &:focus {
+        border: 0;
+        outline: 0;
+      }
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+.avatar{
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
