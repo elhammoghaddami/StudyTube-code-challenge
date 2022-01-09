@@ -1,0 +1,86 @@
+<div class="pageHeader">
+  <div class="pageTitle p-r-24">
+    <div>
+      learnings
+    </div>
+    <span class="countObj">
+      {{totalRecords}} learning
+    </span>
+  </div>
+  <div class="btnPlace">
+    <app-filter-textbox
+    (changed)="filterChanged($event)"></app-filter-textbox>
+  </div>
+</div>
+<div class="pageContent">
+  <mat-progress-bar *ngIf="paginationData.loading" mode="indeterminate"></mat-progress-bar>
+
+  <div class="tableFixHead">
+    <table id="table" class="defaultTable" cellspacing="0" cellpadding="0">
+      <thead>
+        <tr class="tableHead">
+          <th></th>
+          <th>
+            name
+          </th>
+          <th></th>
+          <th>
+            status
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of learnings ; let i = index" class="cursorPointer">
+          <td></td>
+          <td>
+            {{item.name}}
+          </td>
+          <td>
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="actions"
+              class="btn transparentBtn actionsBtn">
+              <mat-icon>more_horiz</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button (click)="assignUserToLearnings(item.id)" class="trasparetntBtn matMenuBtn" mat-menu-item>
+                <mat-icon class="blueColor">person_add</mat-icon>
+                <span>
+                  Assign to users
+                </span>
+              </button>
+              <button (click)="changeStatus(item)" class="trasparetntBtn matMenuBtn disableUser" mat-menu-item>
+                <mat-icon *ngIf="item.status == 1" class="blueColor">archive</mat-icon>
+                <mat-icon *ngIf="item.status == 0" class="blueColor">unarchive</mat-icon>
+                <span>
+                  {{item.status===1 ? 'Archive' : 'Unarchive' }}
+                </span>
+              </button>
+              <button (click)="onRemove(item)" class="trasparetntBtn matMenuBtn" mat-menu-item>
+                <mat-icon class="dangerColor">delete</mat-icon>
+                <span>
+                  Remove
+                </span>
+              </button>
+            </mat-menu>
+          </td>
+          <td>
+            <span class="txtWithIcon">
+              <mat-icon *ngIf="item.status == 0" class="icon blueColor">archive</mat-icon>
+              <mat-icon *ngIf="item.status == 1" class="icon greenColor">unarchive</mat-icon>
+              {{item.status===1 ? 'Active' : 'Archive' }}
+            </span>
+          </td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer d-flex justify-content-center">
+    <button (click)="openAddLearningDialog()" class="primaryCircleBtn btn fabBtn">
+      <mat-icon>add</mat-icon>
+    </button>
+    <app-pagination *ngIf="totalRecords > 0" class="w-100" [data]="paginationData" (action)="getLearnings()">
+    </app-pagination>
+
+  </div>
+</div>
