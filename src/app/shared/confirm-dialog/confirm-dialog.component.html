@@ -1,0 +1,21 @@
+<div mat-dialog-title>
+  <div class="title">
+    {{data.tit}}
+  </div>
+  <div class="action">
+    <mat-icon (click)="dialogRef.close()" class="closeIcon">close</mat-icon>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <p class="text-left m-0" [innerHTML]="data.msg"></p>
+</div>
+<div mat-dialog-actions>
+  <button type="submit" class="transparentBtn" (click)="submitExit()">
+    Yes
+  </button>
+  <button type="submit" class="transparentBtn" (click)="dialogRef.close()">
+    No
+  </button>
+
+</div>
