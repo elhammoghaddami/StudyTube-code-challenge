@@ -1,0 +1,4 @@
+<mat-form-field appearance="outline" class="smallInput">
+  <mat-label>serach</mat-label>
+  <input type="text" name="filter" [(ngModel)]="model.filter" (keyup)="filterChanged($event)"  matInput>
+</mat-form-field>
