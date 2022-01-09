@@ -1,0 +1,36 @@
+<div mat-dialog-title>
+  <div class="title">
+    <mat-icon class="addIcon">add</mat-icon>
+    Add Learning
+  </div>
+  <div class="action">
+    <mat-icon (click)="close()" class="closeIcon">close</mat-icon>
+  </div>
+</div>
+<div mat-dialog-content>
+  <form id="addLearningForm" [formGroup]='addLearningForm' (ngSubmit)="submit(addLearningForm)" novalidate>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input title="name" type="text" name="name" formControlName="name" matInput required>
+      <mat-hint class="errorMsg" data-cy="name-error" [hidden]="f['name'].untouched || f['name'].valid">
+        Name is required
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option *ngFor="let item of status" [value]="item.id">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button type="submit" (click)="submit(addLearningForm)" [disabled]="!addLearningForm.valid" class="transparentBtn"
+    mat-button>
+    <mat-icon class="addIcon">add</mat-icon>
+    Create learning
+  </button>
+</div>
