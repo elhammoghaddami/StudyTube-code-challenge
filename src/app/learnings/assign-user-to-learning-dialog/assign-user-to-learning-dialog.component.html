@@ -1,0 +1,32 @@
+<div mat-dialog-title>
+  <div class="title">
+    <mat-icon class="addIcon">person_add</mat-icon>
+    Assign user
+  </div>
+  <div class="action">
+    <mat-icon (click)="close()" class="closeIcon">close</mat-icon>
+  </div>
+</div>
+<div mat-dialog-content>
+  <form>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>learning</mat-label>
+      <mat-select [formControl]="userSelected" multiple>
+        <mat-select-trigger>
+          {{userSelected.value ? userSelected.value[0] : ''}}
+          <span *ngIf="userSelected.value?.length > 1">
+            (+{{userSelected.value.length - 1}} {{userSelected.value?.length === 2 ? 'other' : 'others'}})
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button type="submit" (click)="submit(userSelected.value)" [disabled]="!userSelected.valid" class="transparentBtn"
+    mat-button>
+    <mat-icon class="addIcon">check</mat-icon>
+    Submit
+  </button>
+</div>
