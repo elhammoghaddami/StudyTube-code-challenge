@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>learnings list</h1>
+<div mat-dialog-content>
+    <ul class="text-left">
+        <li *ngFor="let item of learnings">
+          {{item.name}}
+        </li>
+    </ul>
+</div>
+<div mat-dialog-actions>
+  <button class="transparentBtn"  mat-button mat-dialog-close>Close</button>
+</div>
