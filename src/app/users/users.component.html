@@ -1,0 +1,80 @@
+<div class="pageHeader">
+  <div class="pageTitle p-r-24">
+    <div>
+      users
+    </div>
+    <span class="countObj">
+      {{totalRecords}} user
+    </span>
+  </div>
+  <div class="btnPlace">
+    <app-filter-textbox
+    (changed)="filterChanged($event)"></app-filter-textbox>
+  </div>
+</div>
+<div class="pageContent">
+  <div class="tableFixHead">
+    <table id="table" class="defaultTable" cellspacing="0" cellpadding="0">
+      <thead>
+        <tr class="tableHead">
+          <th></th>
+          <th></th>
+          <th>
+            name
+          </th>
+          <th></th>
+          <th>
+            email
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of users ; let i = index" class="cursorPointer">
+          <td></td>
+          <td class="w-45">
+            <img class="avatar" *ngIf="item.avatar" src="{{baseUrl}}{{item.avatar}}" alt="">
+            <img class="avatar" *ngIf="!item.avatar" src="../../assets/img/person.png" alt="">
+          </td>
+          <td>
+            
+            {{item.name}}
+          </td>
+          <td>
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="actions"
+              class="btn transparentBtn actionsBtn">
+              <mat-icon>more_horiz</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button *ngIf="item.learnings.length !== 0" (click)="openLearningDialog(item)"
+                class="trasparetntBtn matMenuBtn" mat-menu-item>
+                <mat-icon class="blueColor">pageview</mat-icon>
+                <span>
+                  View learnings
+                </span>
+              </button>
+              <button (click)="onRemove(item)" class="trasparetntBtn matMenuBtn" mat-menu-item>
+                <mat-icon class="dangerColor">delete</mat-icon>
+                <span>
+                  Remove
+                </span>
+              </button>
+            </mat-menu>
+          </td>
+          <td>
+            {{item.email}}
+          </td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer d-flex justify-content-center">
+    <button (click)="openAddUserDialog()" class="primaryCircleBtn btn fabBtn">
+      <mat-icon>add</mat-icon>
+    </button>
+    <app-pagination *ngIf="totalRecords > 0" class="w-100" [data]="paginationData" (action)="getUsers()">
+    </app-pagination>
+
+  </div>
+</div>
