@@ -13,6 +13,7 @@
   </div>
 </div>
 <div class="pageContent">
+  <mat-progress-bar *ngIf="paginationData.loading" mode="indeterminate"></mat-progress-bar>
   <div class="tableFixHead">
     <table id="table" class="defaultTable" cellspacing="0" cellpadding="0">
       <thead>

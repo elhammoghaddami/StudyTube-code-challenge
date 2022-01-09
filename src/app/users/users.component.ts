@@ -30,6 +30,7 @@ export class UsersComponent extends CustomGrid implements OnInit {
   }
 
   getUsers(data?) {
+    this.paginationData.loading = true
     const params = {
       ...this.getParams(),
       q: data
@@ -59,7 +60,7 @@ export class UsersComponent extends CustomGrid implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        debugger
+        this.paginationData.loading = true;
         this.userService.createUsers(result).subscribe((response: any) => {
           this.snackBarService.openSnackBar('Add user successfully', 'toastSuccess');
           this.getUsers();

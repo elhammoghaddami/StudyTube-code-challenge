@@ -57,8 +57,6 @@ export class AddUserComponent implements OnInit {
   }
 
   submit({ value, valid }: { value: IUser, valid: boolean }) {
-    // const formData = new FormData();
-    // formData.append('file', this.addUserForm.get('fileSource').value);
     this.dialogRef.close(value)
   }
   close() {
