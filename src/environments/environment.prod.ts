@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  baseUrl: 'https://calm-bastion-13727.herokuapp.com'
 };
