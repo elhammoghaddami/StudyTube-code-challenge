@@ -1,0 +1,31 @@
+<div *ngIf="data.totalCount >= 1" class="d-flex justify-content-between align-items-center h-100 m-x-24">
+  <div class="d-flex align-items-center">
+    <span class="font-14 m-r-8">pageSize : </span>
+    <ul class="pagination">
+      <li *ngFor="let item of pageSize" class="page-item pageNumber"
+        [ngClass]="{'active': item.value === data.pageSize}">
+        <a (click)="selectPageSize(item.value)">{{item.value}}</a>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <ul class="pagination mb-0">
+      <li [ngClass]="{'disabled': data.pageNumber === 1}" class="page-item">
+        <a (click)="prev()" routerLinkActive="false" data-toggle="tooltip" data-placement="bottom" title="prev"
+          class="page-link" tabindex="-1">
+          <mat-icon>keyboard_arrow_left</mat-icon>
+        </a>
+      </li>
+      <li *ngFor="let item of pagesDisplayed" [ngClass]="{'active': item === data.pageNumber}"
+        class="page-item pageNumber">
+        <a routerLinkActive="false" (click)="selectPage(item)">{{item}}</a>
+      </li>
+      <li class="page-item" [ngClass]="{'disabled': data.pageNumber === data.totalCount}">
+        <a (click)="next()" routerLinkActive="false" data-toggle="tooltip" data-placement="bottom" title="next"
+          class="page-link">
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
