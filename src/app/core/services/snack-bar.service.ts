@@ -5,14 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root',
 })
 export class SnackBarService {
-  //create an instance of MatSnackBar
 
   constructor(private snackBar: MatSnackBar) {}
-
-  /* It takes three parameters
-    1.the message string
-    2.the action
-    3.the duration, alignment, etc. */
 
   openSnackBar(message: string, status: string) {
     this.snackBar.open(message, '', {

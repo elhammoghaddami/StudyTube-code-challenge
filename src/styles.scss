@@ -1,5 +1,4 @@
 // Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @import "~@angular/material/theming";
 $mat-myBlue: (50: #e0f1f6,
   100: #b3dde9,
@@ -32,32 +31,18 @@ $mat-myBlue: (50: #e0f1f6,
   ),
 );
 @include mat-core();
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
 $my-primary: mat-palette($mat-grey);
 $my-accent: mat-palette($mat-grey, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
 $my-warn: mat-palette($mat-red);
-
-// Create the theme object (a Sass map containing all of the palettes).
 $myTheme: mat-light-theme($my-primary,
   $my-accent,
   $my-warn);
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include angular-material-theme($myTheme);
-
 @import "./assets/style/general";
 @import "./assets/style/variables";
 @import "./assets/style/button";
 @import "./assets/style/table";
 @import "./assets/style/dialog";
-
 
 .mat-progress-bar {
   z-index: 1;
